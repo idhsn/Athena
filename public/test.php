@@ -1,21 +1,18 @@
 <?php
-require_once __DIR__ . '/../core/Database.php';
+require_once '../core/Database.php';
+require_once '../core/BaseModel.php';
+require_once '../entities/User.php';
 
-try {
-    $pdo = Database::getConnection();
-    echo "✅ Database connection successful!<br>";
-    
-    $stmt = $pdo->query("SELECT COUNT(*) as count FROM users");
-    $result = $stmt->fetch();
-    echo "Total users in database: " . $result['count'] . "<br>";
-    
-    $tables = $pdo->query("SHOW TABLES")->fetchAll();
-    echo "Tables found: " . count($tables) . "<br> <br>";
-    foreach ($tables as $table) {
-        print_r($table) ;
-        echo "<br>";
-    }
-    
-} catch (Exception $e) {
-    echo "❌ Error: " . $e->getMessage();
-}
+echo "1. Find admin: ";
+$admin = User::findByEmail('admin@athena.com');
+echo $admin ? "✅ Found" : "❌ Not found";
+
+echo "<br>2. Register test user: ";
+$id = User::register('test@test.com', 'mypassword', 'Test User');
+echo "✅ ID: $id";
+
+echo "<br>3. Verify password: ";
+$user = User::findByEmail('test@test.com');
+$isValid = User::verifyPassword('mypassword', $user['password']);
+echo $isValid ? "✅ Correct" : "❌ Wrong";
+?>

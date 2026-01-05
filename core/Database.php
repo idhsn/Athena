@@ -4,7 +4,6 @@ class Database {
     
     public static function getConnection(): PDO {
         if (self::$pdo === null) {
-            // Load config
             $config = require __DIR__ . '/../config/database.php';
             
             try {
