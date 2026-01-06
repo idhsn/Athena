@@ -22,7 +22,7 @@
         <div class="error">Registration failed. Try again.</div>
     <?php endif; ?>
     
-    <form method="POST" action="../public/register.php">
+    <form method="POST" action="/Athena/AI/scrum_project/public/register.php">
         <div class="form-group">
             <label>Full Name:</label>
             <input type="text" name="full_name" required>

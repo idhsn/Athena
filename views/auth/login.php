@@ -17,7 +17,7 @@
         <div class="error">Invalid email or password!</div>
     <?php endif; ?>
     
-    <form method="POST" action="../public/login.php">
+    <form method="POST" action="/Athena/AI/scrum_project/public/login.php">
         <div class="form-group">
             <label>Email:</label>
             <input type="email" name="email" required>

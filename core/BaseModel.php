@@ -1,4 +1,6 @@
 <?php
+require_once 'Database.php';
+
 class BaseModel 
 {
     protected static $table = '';
